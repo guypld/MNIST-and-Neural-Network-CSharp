@@ -3,12 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NN
+namespace MNIST_Core
 {
-    class DigitImage
+    public class DigitImage
     {
-        public byte[][] pixels;
-        public byte label;
+        private static int size = 28 * 28;
+
+        private byte[][] pixels;
+        private byte label;
+
+        public byte Label
+        {
+            get { return label; }
+            set { label = value; }
+        }
+
+        public byte[][] Pixels
+        {
+            get { return pixels; }
+            set { pixels = value; }
+        }
+        
+        public byte[] RawImage
+        {
+            get 
+            {
+                byte[] res = new byte[size];
+                System.Buffer.BlockCopy(Pixels, 0, res, 0, size);
+                return res;
+            }
+        }
 
         public DigitImage(byte[][] _pixels, byte _label)
         {

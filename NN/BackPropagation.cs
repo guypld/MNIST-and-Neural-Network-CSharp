@@ -5,22 +5,28 @@ using System.Text;
 using AForge.Neuro;
 using AForge.Neuro.Learning;
 
-namespace NN
+namespace MNIST_Core
 {
-
-    class backprop
+    public class BackPropagation
     {
-        public static DigitImage[] _TestImages;
-        public static DigitImage[] _TrainingImages;
+        private MNISTCore _MCore = new MNISTCore();
+
+        public MNISTCore MCore
+        {
+            get { return _MCore; }
+            set { _MCore = value; }
+        }
+
 
         double[][] input,output;
 
-        public void Init(int trainCount, int testCount)
+        public void Init()
         {
-            for (int i = 0; i < trainCount; i++)
-            {
-                input[i] = _TrainingImages[i].pixels;
-            }
+
+            //for (int i = 0; i < trainCount; i++)
+            //{
+            //    input[i] = _TrainingImages[i].pixels;
+            //}
 
             double[][] input = new double[4][] {
                 new double[] {0, 0}, new double[] {0, 1},
@@ -36,11 +42,6 @@ namespace NN
 
         public void start(DigitImage[] TrainingImages, DigitImage[] TestImages, int trainCount, int testCount)
         {
-            _TestImages = TestImages;
-            _TrainingImages = TrainingImages;
-
-            Init(trainCount, testCount);
-
             // initialize input and output values
 
             // create neural network
@@ -51,13 +52,18 @@ namespace NN
                 1); // one neuron in the second layer
             // create teacher
             BackPropagationLearning teacher = new BackPropagationLearning(network);
+
+            bool needToStop = false;
+
             // loop
-            while (false)//!needToStop)
+            while (!needToStop)
             {
                 // run epoch of learning procedure
                 double error = teacher.RunEpoch(input, output);
                 // check error value to see if we need to stop
                 // ...
+
+                Console.WriteLine("Error = " + error);
             }
         }
        

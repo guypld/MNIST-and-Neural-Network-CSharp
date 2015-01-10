@@ -4,27 +4,40 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace NN
+namespace MNIST_Core
 {
-    enum DATASET__TYPE
-    {
-        TRAINING,
-        TESTING
-    }
 
-    class ReadMNIST
+    public class ReadMNIST
     {
-        byte[][] pixles;
-        byte label;
-        string m_labelsPath;
-        string m_imagesPath;
-        DATASET__TYPE m_type;
+        private byte[][] pixles;
+        private byte label;
+        private string m_labelsPath;
+        private string m_imagesPath;
 
-        public ReadMNIST(string labelsPath, string imagesPath, DATASET__TYPE type)
+        private int m_DBSize;
+
+        public int DBSize
+        {
+            get { return m_DBSize; }
+            set { m_DBSize = value; }
+        }
+
+
+        private List<DigitImage> m_Images = new List<DigitImage>();
+
+        public List<DigitImage> Images
+        {
+            get { return m_Images; }
+            set { m_Images = value; }
+        }
+
+        public ReadMNIST(string labelsPath, string imagesPath, int size)
         {
             m_labelsPath = labelsPath;
             m_imagesPath = imagesPath;
-            m_type = type;
+            DBSize = size;
+
+            Update();
         }
 
         public void Update()
@@ -46,13 +59,14 @@ namespace NN
                 int magic2 = brLabels.ReadInt32();
                 int numLabels = brLabels.ReadInt32();
 
+                Images.Clear();
+
                 pixles = new byte[28][];
                 for (int i = 0; i < pixles.Length; i++)
                     pixles[i] = new byte[28];
 
-                int size = GetDatasetSize(m_type);
                 //for imgaes
-                for (int di = 0; di < size; di++)
+                for (int di = 0; di < DBSize; di++)
                 {
                     for (int i = 0; i < 28; i++)
                     {
@@ -67,10 +81,7 @@ namespace NN
                     //Console.WriteLine(dImage.ToString());
                     //Console.ReadLine();
 
-                    if (m_type == DATASET__TYPE.TESTING)
-                        Program.TestImages[di] = dImage;
-                    else
-                        Program.TrainingImages[di] = dImage;
+                    Images.Add(dImage);
                 }
 
                 fsImages.Close();
@@ -85,15 +96,15 @@ namespace NN
             }
         }
 
-        private int GetDatasetSize(DATASET__TYPE type)
-        {
-            int res = 0;
-            if (type == DATASET__TYPE.TESTING)
-                res = 10000;
-            else
-                res = 60000;
-            return res;
-        }
+        //private int GetDatasetSize(DATASET__TYPE type)
+        //{
+        //    int res = 0;
+        //    if (type == DATASET__TYPE.TESTING)
+        //        res = 10000;
+        //    else
+        //        res = 60000;
+        //    return res;
+        //}
 
 
         

@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7979B1A5-987C-472B-A40A-4FDF63EC88B2}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NN</RootNamespace>
     <AssemblyName>NN</AssemblyName>
@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -53,9 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="backprop.cs" />
+    <Compile Include="BackPropagation.cs" />
     <Compile Include="DigitImage.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="MNISTCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadMNIST.cs" />
   </ItemGroup>
