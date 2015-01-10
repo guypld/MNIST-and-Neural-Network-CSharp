@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using AForge.Neuro;
 using AForge.Neuro.Learning;
+using NN;
 
 namespace MNIST_Core
 {
     public class BackPropagation
     {
         private MNISTCore _MCore = new MNISTCore();
+
+        public DataSet TrainSet { get; set; }
+        public DataSet TestSet { get; set; }
 
         public MNISTCore MCore
         {
@@ -18,32 +22,34 @@ namespace MNIST_Core
         }
 
 
-        double[][] input,output;
+        private void FillSet(DataSet set, List<DigitImage> list)
+        {
+            set.Input = new double[list.Count()][];
+            set.Output = new double[list.Count()][];
+
+            for (int i = 0; i < list.Count() ; i++)
+            {
+                set.Input[i] = list[i].RawImage.Select(b => double.Parse(b.ToString())).ToArray();
+                set.Output[i] = new double[] { double.Parse(list[i].Label.ToString()) };
+            }
+
+        }
 
         public void Init()
         {
-
-            //for (int i = 0; i < trainCount; i++)
-            //{
-            //    input[i] = _TrainingImages[i].pixels;
-            //}
-
-            double[][] input = new double[4][] {
-                new double[] {0, 0}, new double[] {0, 1},
-                new double[] {1, 0}, new double[] {1, 1}
-            };
-            double[][] output = new double[4][] {
-                new double[] {0}, new double[] {1},
-                new double[] {1}, new double[] {0}
-            };
+            TrainSet = new DataSet();
+            TestSet = new DataSet();
+            FillSet(TrainSet, MCore.TrainingImages);
+            FillSet(TestSet, MCore.TestImages);
         }
 
 
 
-        public void start(DigitImage[] TrainingImages, DigitImage[] TestImages, int trainCount, int testCount)
+        public void start(MNISTCore core, int trainCount, int testCount)
         {
+            MCore = core;
             // initialize input and output values
-
+            Init();
             // create neural network
             ActivationNetwork network = new ActivationNetwork(
                 new SigmoidFunction(2),
@@ -59,7 +65,7 @@ namespace MNIST_Core
             while (!needToStop)
             {
                 // run epoch of learning procedure
-                double error = teacher.RunEpoch(input, output);
+                double error = teacher.RunEpoch(TrainSet.Input, TrainSet.Output);
                 // check error value to see if we need to stop
                 // ...
 

@@ -43,5 +43,12 @@ namespace MNIST_Main
             }
             
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var bp = new BackPropagation();
+
+            bp.start(_DB, _DB.TrainingImages.Count(), _DB.TestImages.Count());
+        }
     }
 }

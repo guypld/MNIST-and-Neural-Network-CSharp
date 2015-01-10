@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackPropagation.cs" />
+    <Compile Include="DataSet.cs" />
     <Compile Include="DigitImage.cs" />
     <Compile Include="MNISTCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
