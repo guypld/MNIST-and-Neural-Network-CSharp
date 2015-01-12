@@ -42,8 +42,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +78,7 @@
             this.txtTestSize.Name = "txtTestSize";
             this.txtTestSize.Size = new System.Drawing.Size(55, 20);
             this.txtTestSize.TabIndex = 2;
+            this.txtTestSize.Text = "100";
             // 
             // label3
             // 
@@ -96,6 +95,7 @@
             this.txtTrainSize.Name = "txtTrainSize";
             this.txtTrainSize.Size = new System.Drawing.Size(55, 20);
             this.txtTrainSize.TabIndex = 1;
+            this.txtTrainSize.Text = "1000";
             // 
             // label2
             // 
@@ -130,8 +130,6 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(12, 129);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(388, 111);
@@ -145,7 +143,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(63, 24);
             this.button2.TabIndex = 3;
-            this.button2.Text = "Load";
+            this.button2.Text = "Run";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -181,23 +179,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Training Size:";
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(95, 25);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(287, 20);
-            this.textBox3.TabIndex = 0;
-            this.textBox3.Text = "E:\\Dropbox\\University\\M.Sc\\Neural Networks\\HW1\\";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Files Path:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,8 +212,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label6;
     }
 }
 

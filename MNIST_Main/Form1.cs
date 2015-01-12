@@ -30,7 +30,8 @@ namespace MNIST_Main
                 _DB = new MNISTCore();
                 if (_DB.LoadDB(txtFilesPath.Text,trainSize,testSize) )
                 {
-                    MessageBox.Show("DB Load succefully!");
+                    //MessageBox.Show("DB Load succefully!");
+                    (sender as Button).Enabled = false;
                 }
                 else
                 {

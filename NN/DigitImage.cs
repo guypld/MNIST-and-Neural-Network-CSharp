@@ -7,7 +7,8 @@ namespace MNIST_Core
 {
     public class DigitImage
     {
-        private static int size = 28 * 28;
+        private const int DIM_SIZE = 28;
+        public static int SIZE = DIM_SIZE * DIM_SIZE;
 
         private byte[][] pixels;
         private byte label;
@@ -24,12 +25,20 @@ namespace MNIST_Core
             set { pixels = value; }
         }
         
-        public byte[] RawImage
+        public double[] RawImage
         {
             get 
             {
-                byte[] res = new byte[size];
-                System.Buffer.BlockCopy(Pixels, 0, res, 0, size);
+                double[] res = new double[SIZE];
+
+                for(int i = 0; i < DIM_SIZE; i++)
+                {
+                    for(int j = 0; j < DIM_SIZE; j++)
+                    {
+                        res[i * DIM_SIZE + j] = Pixels[j][i]/127.0 - 1.0;
+                    }
+                }
+
                 return res;
             }
         }
