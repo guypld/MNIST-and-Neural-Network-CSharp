@@ -112,7 +112,7 @@
             this.txtFilesPath.Name = "txtFilesPath";
             this.txtFilesPath.Size = new System.Drawing.Size(287, 20);
             this.txtFilesPath.TabIndex = 0;
-            this.txtFilesPath.Text = "E:\\Dropbox\\University\\M.Sc\\Neural Networks\\HW1\\";
+            this.txtFilesPath.Text = "G:\\Dropbox\\University\\M.Sc\\Neural Networks\\HW1\\";
             // 
             // label1
             // 

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackPropagationProgram.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

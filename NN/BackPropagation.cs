@@ -76,11 +76,14 @@ namespace MNIST_Core
             var network = new AForge.Neuro.ActivationNetwork(
                 new AForge.Neuro.BipolarSigmoidFunction(2),
                 784, // 784 inputs (coz each array corresponding to an image consists of 784 elements )
-                784, //784 neurons in the first layer  (corresponding to input)
+                500,20, //784 neurons in the first layer  (corresponding to input)
                 10); //10 neurons in the second layer (corresponding to 10 digits )
             network.Randomize();
             teacher = new AForge.Neuro.Learning.BackPropagationLearning(network);
-            teacher.LearningRate = 1;
+            teacher.LearningRate = 0.075;//1;
+            
+            teacher.Momentum = 0;
+
 
             while (!needStopping)
             {
@@ -101,6 +104,7 @@ namespace MNIST_Core
                 {
                     needStopping = true;
                 }
+                teacher.LearningRate *= 0.85;
                 iterateCount++;
                 System.Diagnostics.Debug.WriteLine("Iteration  :\t" + iterateCount + " \tError Rate :\t" + error);
             }

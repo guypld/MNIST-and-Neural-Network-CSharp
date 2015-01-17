@@ -28,6 +28,14 @@ namespace MNIST_Main
                 int testSize = int.Parse(txtTestSize.Text);
 
                 _DB = new MNISTCore();
+
+                var path = txtFilesPath.Text;
+
+                if (!path.EndsWith(@"\"))
+                {
+                    path += @"\";
+                }
+
                 if (_DB.LoadDB(txtFilesPath.Text,trainSize,testSize) )
                 {
                     //MessageBox.Show("DB Load succefully!");
