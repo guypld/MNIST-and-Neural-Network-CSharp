@@ -13,11 +13,29 @@ namespace MNIST_Main
 {
     public partial class Form1 : Form
     {
+        private int _CurrentIndex = 0;
+
+
         private MNISTCore _DB;
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void UpdateDigitImage(int index)
+        {
+            try
+            {
+                var img = _DB.TrainingImages[index].Pixels;
+                digitUC1.Pixels = img;
+            }
+            catch 
+            {
+                
+                
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,6 +58,9 @@ namespace MNIST_Main
                 {
                     //MessageBox.Show("DB Load succefully!");
                     (sender as Button).Enabled = false;
+
+
+
                 }
                 else
                 {
@@ -58,6 +79,16 @@ namespace MNIST_Main
             var bp = new BackPropagation();
 
             bp.start(_DB, _DB.TrainingImages.Count(), _DB.TestImages.Count());
+        }
+
+        private void btnNextDigit_Click(object sender, EventArgs e)
+        {
+            UpdateDigitImage(++_CurrentIndex);
+        }
+
+        private void btnPrevDigit_Click(object sender, EventArgs e)
+        {
+            UpdateDigitImage(--_CurrentIndex);
         }
     }
 }

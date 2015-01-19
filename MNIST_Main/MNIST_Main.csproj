@@ -45,6 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackPropagationProgram.cs" />
+    <Compile Include="DigitUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DigitUC.Designer.cs">
+      <DependentUpon>DigitUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,6 +59,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DigitUC.resx">
+      <DependentUpon>DigitUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +88,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NeuralNetworks\NeuralNetworks.csproj">
+      <Project>{1bcacdd2-c27d-4c91-b118-243b5cf5d276}</Project>
+      <Name>NeuralNetworks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NN\MNIST_Core.csproj">
       <Project>{7979b1a5-987c-472b-a40a-4fdf63ec88b2}</Project>
       <Name>MNIST_Core</Name>

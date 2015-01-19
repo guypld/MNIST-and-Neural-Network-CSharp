@@ -72,7 +72,16 @@ namespace MNIST_Core
                     {
                         for (int j = 0; j < 28; j++)
                         {
-                            pixles[i][j] = (byte)brImages.ReadByte();
+                            var b = (byte)brImages.ReadByte();
+
+                            if (b > 30)
+                            {
+                                pixles[i][j] = 254; //(byte)brImages.ReadByte();
+                            }
+                            else
+                            {
+                                pixles[i][j] = 0;
+                            }
                         }
 
                     }

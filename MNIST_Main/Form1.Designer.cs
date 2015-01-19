@@ -42,6 +42,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.digitUC1 = new MNIST_Main.DigitUC();
+            this.btnNextDigit = new System.Windows.Forms.Button();
+            this.btnPrevDigit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -179,11 +182,42 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Training Size:";
             // 
+            // digitUC1
+            // 
+            this.digitUC1.Location = new System.Drawing.Point(448, 29);
+            this.digitUC1.Name = "digitUC1";
+            this.digitUC1.Pixels = null;
+            this.digitUC1.Size = new System.Drawing.Size(28, 28);
+            this.digitUC1.TabIndex = 5;
+            // 
+            // btnNextDigit
+            // 
+            this.btnNextDigit.Location = new System.Drawing.Point(467, 58);
+            this.btnNextDigit.Name = "btnNextDigit";
+            this.btnNextDigit.Size = new System.Drawing.Size(21, 23);
+            this.btnNextDigit.TabIndex = 6;
+            this.btnNextDigit.Text = ">";
+            this.btnNextDigit.UseVisualStyleBackColor = true;
+            this.btnNextDigit.Click += new System.EventHandler(this.btnNextDigit_Click);
+            // 
+            // btnPrevDigit
+            // 
+            this.btnPrevDigit.Location = new System.Drawing.Point(434, 58);
+            this.btnPrevDigit.Name = "btnPrevDigit";
+            this.btnPrevDigit.Size = new System.Drawing.Size(21, 23);
+            this.btnPrevDigit.TabIndex = 6;
+            this.btnPrevDigit.Text = "<";
+            this.btnPrevDigit.UseVisualStyleBackColor = true;
+            this.btnPrevDigit.Click += new System.EventHandler(this.btnPrevDigit_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 317);
+            this.ClientSize = new System.Drawing.Size(524, 317);
+            this.Controls.Add(this.btnPrevDigit);
+            this.Controls.Add(this.btnNextDigit);
+            this.Controls.Add(this.digitUC1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -212,6 +246,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label5;
+        private DigitUC digitUC1;
+        private System.Windows.Forms.Button btnNextDigit;
+        private System.Windows.Forms.Button btnPrevDigit;
     }
 }
 

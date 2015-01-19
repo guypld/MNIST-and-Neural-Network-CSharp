@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace BackPropagation
+namespace NeuralNetworks
 {
   class BackPropagationProgram
   {
-    static void Main(string[] args)
+    void Calc(string[] args)
     {
       try
       {
